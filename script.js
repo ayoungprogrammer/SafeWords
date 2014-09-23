@@ -1,42 +1,37 @@
 var map = {
-		"\\ba+r+s+e+":[],
-		"f+u*c+k+":[],
-		"\\bfu+k":[],
-		"s+h+i+t+":["shiite"],
-		"\\bc+r+a+p+":[],
-		"ni+gg+a+":[],
-		"ballsack":[],
-		"nig+let":[],
-		"nutsack":[],
-		"ni+gg+e+r+":[],
-		"f+a+g+":[],
-		"b+i+t+c+h+":[],
-		"\\bass+\\b":[],
-		"\\basses\\b":[],
-		"ass+ho+le":[],
-		"c+u+n+t+":[],
-		"\\bc+o+c+k+s*\\b":[],
-		"c+h+i+n+k+":[],
-		"s+l+u+t+":[],
-		"d+o+u+c+h+e+":[],
-		"d+i+c+k+":[],
-		"d+y+k+e+":[],
-		"r+e+t+a+r+d+":["retardant"],
-		"g+oo+k+":[],
-		"g+oo+c+h+":[],
-		"ga+ywa+d+":[],
-		"gaa+y":[],
-		"lesbo+":["blesbok"],
-		"\\bpri+cks*\\b":[],
-		"ti+t+s":[],
-		"pu+s+y+":[],
-		"quee+r+":[]
-		
-		};
-
-
-
-
+        /\ba+r+s+e+/gi:[],
+        /f+u*c+k+/gi:[],
+        /\bfu+k/gi:[],
+        /s+h+i+t+/gi:[/shiite/],
+        /\bc+r+a+p+/gi:[],
+        /ni+gg+a+/gi:[],
+        /ballsack/gi:[],
+        /nig+let/gi:[],
+        /nutsack/gi:[],
+        /ni+gg+e+r+/gi:[],
+        /f+a+g+/gi:[],
+        /b+i+t+c+h+/gi:[],
+        /\bass+\b/gi:[],
+        /\basses\b/gi:[],
+        /ass+ho+le/gi:[],
+        /c+u+n+t+/gi:[],
+        /\bc+o+c+k+s*\b/gi:[],
+        /c+h+i+n+k+/gi:[],
+        /s+l+u+t+/gi:[],
+        /d+o+u+c+h+e+/gi:[],
+        /d+i+c+k+/gi:[],
+        /d+y+k+e+/gi:[],
+        /r+e+t+a+r+d+/gi:[/retardant/],
+        /g+oo+k+/gi:[],
+        /g+oo+c+h+/gi:[],
+        /ga+ywa+d+/gi:[],
+        /gaa+y/gi:[],
+        /lesbo+/gi:[/blesbok/],
+        /\bpri+cks*\\b/gi:[],
+        /ti+t+s/gi:[],
+        /pu+s+y+/gi:[],
+        /quee+r+/gi:[]
+};
 
 var observeDOM = (function(){
     var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
@@ -98,18 +93,17 @@ function filterWords(dom){
 			
 			var word = tables[j][k].word;
 			
-			for(exp in map){	
+			for(exp in map){
+				if (!map.hasOwnProperty(exp)){
+					continue;
+				}
 				
-				var regexp = new RegExp(exp,"gi");
-				
-				
-				
-				if(regexp.test(tables[j][k].word)){
+				if(exp.test(tables[j][k].word)){
 					
 					
 					var test = false;
-					for(var w=0;w<map[exp].length;w++){
-						var whiteExp = new RegExp(map[exp][w]);
+					for(var w=0;!test && w<map[exp].length;w++){
+						var whiteExp = map[exp][w];
 						if(whiteExp.test(tables[j][k].word)){
 							console.log('safe: '+tables[j][k].word);
 							test = true;
