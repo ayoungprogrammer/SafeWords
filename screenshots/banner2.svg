@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="920"
+   height="680"
+   id="svg3931"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="banner2.svg"
+   inkscape:export-filename="/Users/Michael/Documents/workspace/SafeWords/banner2.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs3933" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="375"
+     inkscape:cy="291.42857"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="843"
+     inkscape:window-height="680"
+     inkscape:window-x="381"
+     inkscape:window-y="171"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3936">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-372.36218)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect4043"
+       width="920"
+       height="680"
+       x="0"
+       y="372.36218" />
+    <path
+       style="fill:#000080;stroke:#091554;stroke-width:2.64290166px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 66.967596,486.34386 c 37.986214,47.95246 101.544344,32.67513 118.232714,0 16.29038,29.96924 73.09801,51.46817 121.9861,7.59569 0,0 1.88728,198.204 -19.86646,233.56848 -28.19215,45.83112 -69.85432,5.73202 -101.24294,55.15201 -31.85236,-46.658 -54.89072,-25.39985 -97.110494,-56.07848 -21.79144,-15.8346 -21.99892,-240.2377 -21.99892,-240.2377 z"
+       id="path3001"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccscsc" />
+    <path
+       style="fill:#0000ff;stroke:none"
+       d="m 93.604866,521.31528 c 29.612434,37.38161 79.159644,25.47216 92.169174,0 12.6993,23.36276 56.9841,40.12229 95.09516,5.9213 0,0 1.47125,154.51143 -15.48701,182.08002 -21.97738,35.72804 -54.45545,4.46843 -78.92469,42.99444 C 161.62676,715.93825 143.66704,732.51003 110.7543,708.59443 93.766606,696.25047 93.604866,521.31528 93.604866,521.31528 z"
+       id="path3001-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccscsc" />
+    <text
+       xml:space="preserve"
+       style="font-size:105.71606445px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00ff00;fill-opacity:1;stroke:none;font-family:Nadeem;-inkscape-font-specification:Nadeem"
+       x="106.49613"
+       y="658.49445"
+       id="text3793"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99413203,1.0059026)"><tspan
+         sodipodi:role="line"
+         id="tspan3795"
+         x="106.49613"
+         y="658.49445"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Luxi Sans;-inkscape-font-specification:Luxi Sans">SW</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:105.71606445px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00ff00;fill-opacity:1;stroke:none;font-family:Nadeem;-inkscape-font-specification:Nadeem"
+       x="359.38431"
+       y="604.79999"
+       id="text3793-9"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99413203,1.0059026)"><tspan
+         sodipodi:role="line"
+         id="tspan3795-2"
+         x="359.38431"
+         y="604.79999"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Luxi Sans;-inkscape-font-specification:Luxi Sans">SAFE</tspan><tspan
+         sodipodi:role="line"
+         x="359.38431"
+         y="736.94507"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Luxi Sans;-inkscape-font-specification:Luxi Sans"
+         id="tspan3134">WORDS</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="fill:#ffff00;fill-opacity:1;stroke:none"
+       id="path3908"
+       sodipodi:sides="5"
+       sodipodi:cx="352.85715"
+       sodipodi:cy="19.285713"
+       sodipodi:r1="61.233078"
+       sodipodi:r2="30.616537"
+       sodipodi:arg1="-0.29592604"
+       sodipodi:arg2="0.33239249"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 411.42858,1.4285701 -29.63071,27.8474879 6.142,40.196234 -35.64093,-19.575131 -36.33091,18.262707 7.6034,-39.945584 -28.59573,-28.90926071 40.34009,-5.11259779 18.65777,-36.1296125 17.32814,36.7858245 z"
+       transform="matrix(1.2897967,0,0,1.2897967,343.69463,487.08342)"
+       inkscape:transform-center-x="-0.44497418"
+       inkscape:transform-center-y="-7.1173036" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Nadeem;-inkscape-font-specification:Nadeem"
+       x="122.85714"
+       y="915.2193"
+       id="text3986"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3988"
+         x="122.85714"
+         y="915.2193">Keep your webpages clean</tspan></text>
+  </g>
+</svg>

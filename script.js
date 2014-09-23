@@ -1,16 +1,18 @@
 var map = {
+		"\\ba+r+s+e+":[],
 		"f+u*c+k+":[],
-		"s+h+i+t+":[],
+		"\\bfu+k":[],
+		"s+h+i+t+":["shiite"],
 		"\\bc+r+a+p+":[],
-		"ni+g+a+":[],
+		"ni+gg+a+":[],
 		"ballsack":[],
-		"niglet":[],
+		"nig+let":[],
 		"nutsack":[],
 		"ni+gg+e+r+":[],
 		"f+a+g+":[],
 		"b+i+t+c+h+":[],
 		"\\bass+\\b":[],
-		"\\basses+\\b":[],
+		"\\basses\\b":[],
 		"ass+ho+le":[],
 		"c+u+n+t+":[],
 		"\\bc+o+c+k+s*\\b":[],
@@ -34,59 +36,97 @@ var map = {
 
 
 
-var nodes = getTextNodes(document);
-var tables = [];
 
-for(var i=0;i<nodes.length;i++){
-	var table = splitStr(nodes[i].data);
-	tables.push(table);
-}
 
-var hashes = {};
-for(word in map){
-	hashes[word] = hashCode(word);
-}
+var observeDOM = (function(){
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+        eventListenerSupported = window.addEventListener;
 
-//console.log("Running script");
-//var exp1 = new RegExp("t+e*s+t+","i");
-//console.log(exp1.test("txsstt"));
+    return function(obj, callback){
+        if( MutationObserver ){
+            // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+                mutations.forEach(function(mutation){
+                	callback(mutation.addedNodes);
+                });
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
+        }
+        else if( eventListenerSupported ){
+        	console.log("mutation not suported");
+           // obj.addEventListener('DOMNodeInserted', callback, false);
+            //obj.addEventListener('DOMNodeRemoved', callback, false);
+        }
+    }
+})();
 
-for(var j=0;j<tables.length;j++){
+filterWords(document);
+
+
+observeDOM(document,function(addedNodes){
+	for(var i=0;i<addedNodes.length;i++){
+		filterWords(addedNodes[i]);
+	}
+});
+
+
+function filterWords(dom){
 	
-	var offset = 0;
+	var nodes = getTextNodes(dom);
+	var tables = [];
 	
-	for(var k=0;k<tables[j].length;k++){
+	for(var i=0;i<nodes.length;i++){
+		var table = splitStr(nodes[i].data);
+		tables.push(table);
+	}
+	
+	var hashes = {};
+	for(word in map){
+		hashes[word] = hashCode(word);
+	}
+	
+	//console.log("Running script");
+	//var exp1 = new RegExp("t+e*s+t+","i");
+	//console.log(exp1.test("txsstt"));
+	
+	for(var j=0;j<tables.length;j++){
 		
-		var word = tables[j][k].word;
+		var offset = 0;
 		
-		for(exp in map){	
+		for(var k=0;k<tables[j].length;k++){
 			
-			var regexp = new RegExp(exp,"gi");
+			var word = tables[j][k].word;
 			
-			
-			
-			if(regexp.test(tables[j][k].word)){
+			for(exp in map){	
+				
+				var regexp = new RegExp(exp,"gi");
 				
 				
-				var test = false;
-				for(var w=0;w<map[exp].length;w++){
-					var whiteExp = new RegExp(map[exp][w]);
-					if(whiteExp.test(tables[j][k].word)){
-						console.log('safe: '+tables[j][k].word);
-						test = true;
+				
+				if(regexp.test(tables[j][k].word)){
+					
+					
+					var test = false;
+					for(var w=0;w<map[exp].length;w++){
+						var whiteExp = new RegExp(map[exp][w]);
+						if(whiteExp.test(tables[j][k].word)){
+							console.log('safe: '+tables[j][k].word);
+							test = true;
+						}
 					}
-				}
-				if(!test){
-					var replace = "@!$#@$@!@#$@#$&#".substring(0,Math.min(word.length,15));//map[word];
-					var data = nodes[j].data;
-					
-					console.log(tables[j][k].word);
-					
-					
-					var pre = data.substring(0,tables[j][k].pos+offset);
-					var suf = data.substring(tables[j][k].pos+offset+word.length,data.length);
-					nodes[j].data = pre+replace+suf;
-					offset += replace.length-word.length;
+					if(!test){
+						var replace = "@!$#@$@!@#$@#$&#".substring(0,Math.min(word.length,15));//map[word];
+						var data = nodes[j].data;
+						
+						console.log(tables[j][k].word);
+						
+						
+						var pre = data.substring(0,tables[j][k].pos+offset);
+						var suf = data.substring(tables[j][k].pos+offset+word.length,data.length);
+						nodes[j].data = pre+replace+suf;
+						offset += replace.length-word.length;
+					}
 				}
 			}
 		}
