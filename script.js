@@ -1,15 +1,15 @@
 var map = [
-    { regex: /\ba+r+s+e+/gi,       exceptions: [] },
+    { regex: /\ba+r+s+e+/gi,       exceptions: [/arsenal/gi] },
     { regex: /f+u*c+k+/gi,         exceptions: [] },
     { regex: /\bfu+k/gi,           exceptions: [] },
-    { regex: /s+h+i+t+/gi,         exceptions: [/shiite/] },
+    { regex: /s+h+i+t+/gi,         exceptions: [/shiite/gi] },
     { regex: /\bc+r+a+p+/gi,       exceptions: [] },
     { regex: /ni+gg+a+/gi,         exceptions: [] },
     { regex: /ballsack/gi,         exceptions: [] },
     { regex: /nig+let/gi,          exceptions: [] },
     { regex: /nutsack/gi,          exceptions: [] },
     { regex: /ni+gg+e+r+/gi,       exceptions: [] },
-    { regex: /f+a+g+/gi,           exceptions: [] },
+    { regex: /f+a+g+/gi,           exceptions: [/cofagrigus/gi] },
     { regex: /b+i+t+c+h+/gi,       exceptions: [] },
     { regex: /\bass+\b/gi,         exceptions: [] },
     { regex: /\basses\b/gi,        exceptions: [] },
@@ -21,17 +21,19 @@ var map = [
     { regex: /d+o+u+c+h+e+/gi,     exceptions: [] },
     { regex: /d+i+c+k+/gi,         exceptions: [] },
     { regex: /d+y+k+e+/gi,         exceptions: [] },
-    { regex: /r+e+t+a+r+d+/gi,     exceptions: [/retardant/] },
+    { regex: /r+e+t+a+r+d+/gi,     exceptions: [/retardant/gi] },
     { regex: /g+oo+k+/gi,          exceptions: [] },
     { regex: /g+oo+c+h+/gi,        exceptions: [] },
     { regex: /ga+ywa+d+/gi,        exceptions: [] },
     { regex: /gaa+y/gi,            exceptions: [] },
-    { regex: /lesbo+/gi,           exceptions: [/blesbok/] },
-    { regex: /\bpri+cks*\\b/gi,    exceptions: [] },
+    { regex: /lesbo+/gi,           exceptions: [/blesbok/gi] },
+    { regex: /\bpri+cks*\b/gi,    exceptions: [] },
     { regex: /ti+t+s/gi,           exceptions: [] },
     { regex: /pu+s+y+/gi,          exceptions: [] },
     { regex: /quee+r+/gi,          exceptions: [] },
-    { regex: /co+c+k+s+u+c+k+e+r/, exceptions: [] }
+    { regex: /co+c+k+s+u+c+k+e+r/, exceptions: [] },
+    { regex: /\bfap/gi, exceptions: [] },
+    { regex: /\bpiss+/gi, exceptions: [] }
 ];
 
 var observeDOM = (function(){
@@ -72,11 +74,6 @@ function filterWords(dom){
         tables.push(table);
     }
 
-    var hashes = {};
-    for(word in map){
-        hashes[word] = hashCode(word);
-    }
-
     for(var j=0;j<tables.length;j++){
 
         var offset = 0;
@@ -87,6 +84,7 @@ function filterWords(dom){
 
             for(var i=0;i<map.length;i++){
                 if(map[i].regex.test(tables[j][k].word)){
+                    console.log(tables[j][k].word);
                     var test = false;
                     for(var w=0;!test && w<map[i].exceptions.length;w++){
                         var whiteExp = map[i].exceptions[w];
@@ -109,18 +107,6 @@ function filterWords(dom){
     }
 }
 
-function hashCode(str){
-    str = str.toLowerCase();
-    var hash = 0, i, char;
-    if (str.length == 0) return hash;
-    for (i = 0, l = this.length; i < l; i++) {
-        char  = str.charCodeAt(i);
-        hash  = ((hash<<5)-hash)+char;
-        hash |= 0; // Convert to 32bit integer
-    }
-    return hash;
-}
-
 function getTextNodes(root){
     var nodeStack = [];
     getNodes(root,nodeStack);
@@ -131,11 +117,25 @@ function getNodes(node,nodeStack){
     // node type 3 is a text node
     if(node.nodeType==3){
         nodeStack.push(node);
-    }else {
+    }
+    else if(node.shadowRoot){
+        node = node.shadowRoot;
+
+        observeDOM(node,function(addedNodes){
+            for(var i=0;i<addedNodes.length;i++){
+                filterWords(addedNodes[i]);
+            }
+        });
+
+        for(var child in node.children){
+            getNodes(node.children[child], nodeStack);
+        }
+    }
+    else {
         var child = node.firstChild, nextChild;
         while(child){
             nextChild = child.nextSibling;
-            getNodes(child,nodeStack);
+            getNodes(child, nodeStack);
             child = nextChild;
         }
     }
@@ -160,11 +160,9 @@ function splitStr(str){
             if(!isLetter(str.charAt(end))){
                 if(end-begin>0){
                     var word = str.substring(begin,end);
-                    var hash = hashCode(word);
                     var obj = {
                         'pos': begin,
                         'word': word,
-                        'hash': hash
                     };
                     tokens.push(obj);
                 }
@@ -180,10 +178,8 @@ function splitStr(str){
     }
     if(end-begin>0&&word){
         var word = str.substring(begin,end);
-        var hash = hashCode(word);
         var obj = {'pos':begin,
-            'word':word,
-            'hash': hash};
+            'word':word};
         tokens.push(obj);
     }
     return tokens;

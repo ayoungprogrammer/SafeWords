@@ -1,7 +1,7 @@
 {
 	
 "name":"Safe Words",
-"version":"0.13",
+"version":"0.16",
 "description":"Takes out bad words from all your webpages",
 "manifest_version":2,
 "icons": { "16": "icon16.png",
